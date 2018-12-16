@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Role;
-use App\MenuCategory;
+use App\Lapangan;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         if (! $this->app->runningInConsole()) {
 
             view()->share('roles', Role::all());
+            view()->share('field_locations', Lapangan::all());
 
         }
     }
