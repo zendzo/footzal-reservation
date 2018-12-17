@@ -1,1 +1,1 @@
-@extends('layouts.Xenon.master')
+@extends('layouts.Xenon.horizontal_menu')

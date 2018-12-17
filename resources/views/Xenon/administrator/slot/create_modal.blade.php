@@ -4,86 +4,72 @@
 				
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Create New User</h4>
+					<h4 class="modal-title">Buka Hari & Jam Sewa</h4>
 				</div>
 				
 				<div class="modal-body">
-					<form class="form-horizontal"  action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
+					<form class="form-horizontal"  action="{{ route('admin.slot.store') }}" method="POST" enctype="multipart/form-data">
 						{{ csrf_field() }}
 
-						<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-							<label for="username" class="col-sm-2 control-label">Username</label>
+						<div class="form-group{{ $errors->has('lapangan_id') ? ' has-error' : '' }}">
+							<label for="lapangan_id" class="col-sm-2 control-label">Lapangan</label>
 
 							<div class="col-sm-10">
-								<input id="name" name="username" type="text" class="form-control" placeholder="username" value="{{ old('email') }}" required>
+								<select class="form-control" name="lapangan_id" id="lapangan_id">
+									@foreach ($field_locations as $lapangan)
+											<option value="{{ $lapangan->id }}">{{ $lapangan->name }}</option>
+									@endforeach
+								</select>
 
-								@if ($errors->has('username'))
+								@if ($errors->has('lapangan_id'))
 										<span class="help-block">
-												<strong>{{ $errors->first('username') }}</strong>
+												<strong>{{ $errors->first('lapangan_id') }}</strong>
 										</span>
 								@endif
 							</div>
 						</div>
 
-						<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-								<label for="email" class="col-sm-2 control-label">email</label>
+						<div class="form-group{{ $errors->has('rent_date') ? ' has-error' : '' }}">
+								<label for="rent_date" class="col-sm-2 control-label">Tanggal Slot</label>
 
 								<div class="col-sm-10">
-									<input id="email" name="email" type="text" class="form-control" placeholder="email address" value="{{ old('email') }}" required>
+									<input id="rent_date" name="rent_date" type="text" class="form-control" placeholder="rent_date address" value="{{ old('rent_date') }}" required>
 
-									@if ($errors->has('email'))
+									@if ($errors->has('rent_date'))
 											<span class="help-block">
-													<strong>{{ $errors->first('email') }}</strong>
+													<strong>{{ $errors->first('rent_date') }}</strong>
+											</span>
+									@endif
+								</div>
+							</div>
+						
+							<div class="form-group{{ $errors->has('total_seat') ? ' has-error' : '' }}">
+								<label for="total_seat" class="col-sm-2 control-label">Total Jam Sewa</label>
+
+								<div class="col-sm-10">
+									<input id="total_seat" name="total_seat" type="text" class="form-control" placeholder="Total Seat Penyewaan" value="{{ old('total_seat') }}" required>
+
+									@if ($errors->has('total_seat'))
+											<span class="help-block">
+													<strong>{{ $errors->first('total_seat') }}</strong>
 											</span>
 									@endif
 								</div>
 							</div>
 
-							<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-									<label for="password" class="col-sm-2 control-label">password</label>
-	
-									<div class="col-sm-10">
-										<input id="password" name="password" type="password" class="form-control" placeholder="password" value="{{ old('password') }}" required>
-	
-										@if ($errors->has('password'))
-												<span class="help-block">
-														<strong>{{ $errors->first('password') }}</strong>
-												</span>
-										@endif
-									</div>
+							<div class="form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">
+								<label for="start_time" class="col-sm-2 control-label">Jam Mulai Sewa</label>
+
+								<div class="col-sm-10">
+									<input id="start_time" name="start_time" type="text" class="form-control" placeholder="Total Seat Penyewaan" value="{{ old('start_time') }}" required>
+
+									@if ($errors->has('start_time'))
+											<span class="help-block">
+													<strong>{{ $errors->first('start_time') }}</strong>
+											</span>
+									@endif
 								</div>
-
-								<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-										<label for="password" class="col-sm-2 control-label">Pass Confirmation</label>
-		
-										<div class="col-sm-10">
-											<input id="password_confirmation" name="password_confirmation" type="password" class="form-control" placeholder="password" value="{{ old('password') }}" required>
-		
-											@if ($errors->has('password'))
-													<span class="help-block">
-															<strong>{{ $errors->first('password') }}</strong>
-													</span>
-											@endif
-										</div>
-									</div>
-
-								<div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-										<label for="role" class="col-sm-2 control-label">User Role</label>
-		
-										<div class="col-sm-10">
-											<select class="form-control" name="role" id="role">
-												@foreach ($roles as $role)
-														<option value="{{ $role->id }}">{{ $role->name }}</option>
-												@endforeach
-											</select>
-		
-											@if ($errors->has('role'))
-													<span class="help-block">
-															<strong>{{ $errors->first('role') }}</strong>
-													</span>
-											@endif
-										</div>
-									</div>
+							</div>
 					
 				</div>
 				

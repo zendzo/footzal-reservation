@@ -38,7 +38,12 @@ class LapanganController extends Controller
     public function store(Request $request)
     {
         try{
-           $lapangan = Lapangan::create($request->all());
+           $lapangan = Lapangan::create([
+               'name' => $request->get('name'),
+               'address' => $request->get('address'),
+               'description' => $request->get('description'),
+               'slug' => str_slug($request->get('name'))
+           ]);
 
           if($lapangan){
             return redirect()->back()
@@ -88,7 +93,12 @@ class LapanganController extends Controller
         
         try{
 
-            $lapangan->update($request->all());
+            $lapangan->update([
+                'name' => $request->get('name'),
+                'address' => $request->get('address'),
+                'description' => $request->get('description'),
+                'slug' => str_slug($request->get('name'))
+            ]);
 
             return redirect()->back()
                     ->with('message', 'Data Telah Tersimpan!')

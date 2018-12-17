@@ -16,7 +16,7 @@
 
 @if (auth()->check())
 <li class="o{{ active([],'active','opened') }}">
-    <a href="layout-variants.html">
+    <a href="#">
       <i class="linecons-wallet"></i>
       <span class="title">My Booking</span>
     </a>

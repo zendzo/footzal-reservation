@@ -34,6 +34,7 @@
           <th>Lapangan</th>
           <th>Alamat</th>
           <th>Keterangan</th>
+          <th>Url Lapangan</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -45,6 +46,7 @@
               <td>{{ $lapangan->name }}</td>
               <td>{{ $lapangan->address }}</td>
               <td>{{ $lapangan->description }}</td>
+              <td>{{ $lapangan->slug }}</td>
               <td>
                 <a href="#" onclick="jQuery('#modalEdit-{{ $lapangan->id }}').modal('show');" class="btn btn-icon btn-blue btn-xs"><i class="fa fa-edit"></i></a>
                 @include('Xenon.administrator.lapangan.edit_modal')

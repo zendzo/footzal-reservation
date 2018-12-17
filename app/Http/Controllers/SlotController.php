@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Slot;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Slot;
+use App\Lapangan;
 
 class SlotController extends Controller
 {
@@ -26,7 +28,7 @@ class SlotController extends Controller
      */
     public function create()
     {
-        //
+        //code
     }
 
     /**
@@ -37,7 +39,38 @@ class SlotController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lapangan = Lapangan::findOrfail($request->get('lapangan_id'));
+
+        $start_time = $request->get('start_time');
+
+        $total_seat = $request->get('total_seat');
+        
+        try{
+
+            $slot = $lapangan->slots()->create([
+                'rent_date' => Carbon::createFromFormat('d-m-Y', $request->get('rent_date'))
+            ]);
+
+            for ($i=1; $i < $total_seat; $i++) {
+
+                $hour = $start_time + $i; 
+
+                $slot->seats()->create([
+                    'rent_time' => Carbon::createFromTime($hour,0,0,'Asia/Jakarta')
+                ]);
+            }
+ 
+             return redirect()->back()
+                 ->with('message', 'Data Telah Tersimpan!')
+                 ->with('status','success')
+                 ->with('type','success');
+
+         }catch(\Exception $e){
+             return redirect()->back()
+                 ->with('message', $e->getMessage())
+                 ->with('status','error')
+                 ->with('type','error');
+         }
     }
 
     /**

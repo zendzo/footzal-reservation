@@ -72,7 +72,7 @@
                       <thead>
                         <tr>
                           <th>Jam Sewa Dibuka</th>
-                          <th>Sudah Dibooking</th>
+                          <th>Status Booking</th>
                           <th>#</th>
                         </tr>
                       </thead>
@@ -88,11 +88,18 @@
                               @endif
                             </td>
                             <td>
-                              @if (!$seat->booked)
-                                <button class="btn btn-primay btn-icon">
-                                  <i class="fa-money"></i>
-                                  <span>Booking Sekarang</span>
-                                </button>
+                              @if (!auth()->check())
+                              <button class="btn btn-primay btn-icon">
+                                <i class="fa-lock"></i>
+                                <span>Login Untuk Booking</span>
+                              </button>
+                              @else
+                                @if (!$seat->booked)
+                                  <button class="btn btn-secondary btn-icon">
+                                    <i class="fa-money"></i>
+                                    <span>Booking Sekarang</span>
+                                  </button>
+                                @endif
                               @endif
                             </td>
                           </tr>
