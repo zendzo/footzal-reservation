@@ -22,6 +22,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 
 	Route::resource('seat', 'SeatController');
 
+	Route::get('order-list-member','Admin\OrderController@index')->name('order.list');
+
 	Route::get('/application-menus',[
 		'as'	=>	'app.menu',
 		'uses'	=>	'Admin\MenuController@index'
@@ -35,6 +37,10 @@ Route::group(['prefix'=>'member','as'=>'member.'], function(){
 		'as'	=>	'dashboard',
 		'uses'	=>	'Member\MemberController@index'
 	]);
+
+	Route::get('my-order', 'Member\OrderController@myOrder')->name('order.list');
+
+	Route::post('order-seat', 'Member\OrderController@store')->name('user.order');
 
 });
 

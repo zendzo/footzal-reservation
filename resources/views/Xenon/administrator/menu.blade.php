@@ -39,14 +39,14 @@
     </li>
   </ul>
 </li>
-<li class="{{ active(['admin.data-booking.*'],'opened active') }}">
+<li class="{{ active(['admin.order.list'],'opened active') }}">
   <a href="#">
     <i class="linecons-wallet"></i>
     <span class="title">Data Penyewaan</span>
   </a>
   <ul>
-    <li class="{{ active('admin.lapangan.index') }}">
-      <a href="{{ route('admin.lapangan.index') }}">
+    <li class="{{ active('admin.order.list') }}">
+      <a href="{{ route('admin.order.list') }}">
         <span class="title">Semua</span>
       </a>
     </li>

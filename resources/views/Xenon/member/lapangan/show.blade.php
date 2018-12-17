@@ -95,10 +95,15 @@
                               </button>
                               @else
                                 @if (!$seat->booked)
-                                  <button class="btn btn-secondary btn-icon">
-                                    <i class="fa-money"></i>
-                                    <span>Booking Sekarang</span>
-                                  </button>
+                                <a class="btn btn-secondary" href="{{ route('member.user.order') }}" onclick="event.preventDefault(); document.getElementById('order-form').submit();">
+                                  <i class="fa fa-money"></i>  Order Sekarang
+                                </a>
+                              
+                                <form id="order-form" action="{{ route('member.user.order') }}" method="POST" style="display: none;">
+                                  @csrf
+                                  @method('POST')
+                                  <input type="hidden" name="seat_id" value="{{ $seat->id }}">
+                                </form>
                                 @endif
                               @endif
                             </td>

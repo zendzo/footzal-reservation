@@ -1,11 +1,11 @@
-<li class="o{{ active([],'active','opened') }}">
+<li class="{{ active(['search.lapangan'],'active','opened') }}">
   <a href="layout-variants.html">
     <i class="linecons-location"></i>
     <span class="title">Lokasi Lapangan</span>
   </a>
   <ul>
     @foreach ($field_locations as $lap)
-    <li class="">
+    <li class="{{ $lap->slug === request()->segment(2) ? 'active' : '' }}">
         <a href="{{ route('search.lapangan', $lap->slug) }}">
           <span class="title">{{ $lap->name }}</span>
         </a>
@@ -15,14 +15,14 @@
 </li>
 
 @if (auth()->check())
-<li class="o{{ active([],'active','opened') }}">
+<li class="{{ active(['member.user.order'],'active','opened') }}">
     <a href="#">
       <i class="linecons-wallet"></i>
       <span class="title">My Booking</span>
     </a>
     <ul>
-        <li class="">
-            <a href="layout-collapsed-sidebar.html">
+        <li class="{{ active('member.order.list') }}">
+            <a href="{{ route('member.order.list') }}">
               <span class="title">Semua Booking</span>
             </a>
           </li>
