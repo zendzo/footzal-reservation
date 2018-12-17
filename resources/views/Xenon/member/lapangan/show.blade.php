@@ -55,7 +55,7 @@
         <ul class="nav nav-tabs nav-tabs-justified">
           @foreach ($lapangan->slots as $slot)
           <li class="{{ $loop->first ? 'active' : ''}}">
-              <a href="#home-3" data-toggle="tab">
+              <a href="#{{$slot->rent_date}}" data-toggle="tab">
                 <span class="visible-xs"><i class="fa-home"></i></span>
                 <span class="hidden-xs">{{ $slot->rent_date }}</span>
               </a>
