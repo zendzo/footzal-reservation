@@ -51,7 +51,7 @@ class SlotController extends Controller
                 'rent_date' => Carbon::createFromFormat('d-m-Y', $request->get('rent_date'))
             ]);
 
-            for ($i=1; $i < $total_seat; $i++) {
+            for ($i=1; $i <= $total_seat; $i++) {
 
                 $hour = $start_time + $i; 
 

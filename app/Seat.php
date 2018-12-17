@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seat extends Model
 {
-    protected $fillable = ['slot_id','rent_time'];
+    protected $fillable = ['slot_id','rent_time','booked','confirmed'];
 
     // protected $dates = ['rent_time'];
 
