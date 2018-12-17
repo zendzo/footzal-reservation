@@ -37,7 +37,21 @@ class LapanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+           $lapangan = Lapangan::create($request->all());
+
+          if($lapangan){
+            return redirect()->back()
+                ->with('message', 'Data Telah Tersimpan!')
+                ->with('status','success')
+                ->with('type','success');
+          }
+        }catch(\Exception $e){
+            return redirect('/admin/role')
+                ->with('message', $e->getMessage())
+                ->with('status','error')
+                ->with('type','error');
+        }
     }
 
     /**
@@ -71,7 +85,21 @@ class LapanganController extends Controller
      */
     public function update(Request $request, Lapangan $lapangan)
     {
-        //
+        
+        try{
+
+            $lapangan->update($request->all());
+
+            return redirect()->back()
+                    ->with('message', 'Data Telah Tersimpan!')
+                    ->with('status','success')
+                    ->with('type','success');
+        }catch(\Exception $e){
+            return redirect()->back()
+                    ->with('message', $e->getMessage()())
+                    ->with('status','error')
+                    ->with('type','error');
+        }
     }
 
     /**

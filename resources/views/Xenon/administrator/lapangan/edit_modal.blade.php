@@ -8,7 +8,7 @@
 				</div>
 				
 				<div class="modal-body">
-				<form class="form-horizontal"  action="{{ route('admin.user.update', $lapangan->id) }}" method="POST" enctype="multipart/form-data">
+				<form class="form-horizontal"  action="{{ route('admin.lapangan.update', $lapangan->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
   
