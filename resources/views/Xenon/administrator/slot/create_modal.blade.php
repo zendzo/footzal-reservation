@@ -33,7 +33,7 @@
 								<label for="rent_date" class="col-sm-2 control-label">Tanggal Slot</label>
 
 								<div class="col-sm-10">
-									<input id="rent_date" name="rent_date" type="text" class="form-control" placeholder="rent_date address" value="{{ old('rent_date') }}" required>
+								<input id="rent_date" name="rent_date" type="text" class="form-control" placeholder="Tanggal Slot Dibuka ex. {{ date('d-m-Y') }}" value="{{ old('rent_date') }}" required>
 
 									@if ($errors->has('rent_date'))
 											<span class="help-block">
@@ -47,7 +47,7 @@
 								<label for="total_seat" class="col-sm-2 control-label">Total Jam Sewa</label>
 
 								<div class="col-sm-10">
-									<input id="total_seat" name="total_seat" type="text" class="form-control" placeholder="Total Seat Penyewaan" value="{{ old('total_seat') }}" required>
+									<input id="total_seat" name="total_seat" type="text" class="form-control" placeholder="Total Jam Penyewaan Dalam Sehari" value="{{ old('total_seat') }}" required>
 
 									@if ($errors->has('total_seat'))
 											<span class="help-block">
@@ -61,11 +61,25 @@
 								<label for="start_time" class="col-sm-2 control-label">Jam Mulai Sewa</label>
 
 								<div class="col-sm-10">
-									<input id="start_time" name="start_time" type="text" class="form-control" placeholder="Total Seat Penyewaan" value="{{ old('start_time') }}" required>
+									<input id="start_time" name="start_time" type="text" class="form-control" placeholder="Jam Seat Penyewaan Mulai Tersedia" value="{{ old('start_time') }}" required>
 
 									@if ($errors->has('start_time'))
 											<span class="help-block">
 													<strong>{{ $errors->first('start_time') }}</strong>
+											</span>
+									@endif
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+								<label for="price" class="col-sm-2 control-label">Harga Sewa</label>
+
+								<div class="col-sm-10">
+									<input id="price" name="price" type="text" class="form-control" placeholder="Jam Seat Penyewaan Mulai Tersedia" value="{{ old('price') }}" required>
+
+									@if ($errors->has('price'))
+											<span class="help-block">
+													<strong>{{ $errors->first('price') }}</strong>
 											</span>
 									@endif
 								</div>

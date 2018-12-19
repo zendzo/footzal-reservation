@@ -24,6 +24,10 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 
 	Route::get('order-list-member','Admin\OrderController@index')->name('order.list');
 
+	Route::post('verify-payment', 'Admin\VerifiedPaymentController@verify')->name('verify.payment');
+
+	Route::post('reject-payment', 'Admin\VerifiedPaymentController@reject')->name('reject.payment');
+
 	Route::get('/application-menus',[
 		'as'	=>	'app.menu',
 		'uses'	=>	'Admin\MenuController@index'
@@ -39,6 +43,10 @@ Route::group(['prefix'=>'member','as'=>'member.'], function(){
 	]);
 
 	Route::get('my-order', 'Member\OrderController@myOrder')->name('order.list');
+
+	Route::get('upload-payment/{code}', 'Member\OrderController@uploadPayment')->name('payment.create');
+
+	Route::post('upload-payment', 'Member\UploadPaymentController@upload')->name('payment.store');
 
 	Route::post('order-seat', 'Member\OrderController@store')->name('user.order');
 

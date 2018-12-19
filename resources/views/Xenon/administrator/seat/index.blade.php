@@ -33,7 +33,8 @@
           <th>#</th>
           <th>Lokasi Lapangan</th>
           <th>Tanggal Penyewaan</th>
-          <th>Jam Penyewaan</th>
+          <th>Jam</th>
+          <th>Harga</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -45,6 +46,7 @@
               <td><a href="{{ route('admin.lapangan.show', $seat->slot->lapangan->id) }}">{{ $seat->slot->lapangan->name }}</a></td>
               <td>{{ $seat->slot->rent_date }}</td>
               <td>{{ $seat->rent_time }}</td>
+              <td>{{ $seat->price }}</td>
               <td>
                 <a href="#" onclick="jQuery('#modalEdit-{{ $seat->id }}').modal('show');" class="btn btn-icon btn-blue btn-xs"><i class="fa fa-edit"></i></a>
                 {{-- @include('Xenon.administrator.seat.edit_modal') --}}

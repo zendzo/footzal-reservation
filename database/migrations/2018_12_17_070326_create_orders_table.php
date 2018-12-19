@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('seat_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->boolean('confirmed')->nullable()->default(false);
+            $table->boolean('rejected')->nullable()->default(false);
             $table->boolean('paid')->nullable()->default(false);
             $table->timestamps();
         });

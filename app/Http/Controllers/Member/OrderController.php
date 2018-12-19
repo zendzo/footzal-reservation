@@ -15,6 +15,13 @@ class OrderController extends Controller
         return view($this->viewLocation('member.order.index'), compact(['myOrders']));
     }
 
+    public function uploadPayment($code)
+    {
+        $order = Order::whereCode($code)->first();
+
+        return view($this->viewLocation('member.order.upload'), compact(['order']));
+    }
+
     public function store(Request $request)
     {
         try{

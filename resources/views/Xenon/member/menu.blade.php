@@ -15,10 +15,11 @@
 </li>
 
 @if (auth()->check())
-<li class="{{ active(['member.user.order'],'active','opened') }}">
+<li class="{{ active(['member.user.order','member.payment.create','member.order.list'],'active','opened') }}">
     <a href="#">
       <i class="linecons-wallet"></i>
       <span class="title">My Booking</span>
+      <span class="badge badge-green">{{ auth()->user()->orders->count() }}</span>
     </a>
     <ul>
         <li class="{{ active('member.order.list') }}">

@@ -21,7 +21,9 @@ class SeatsTableSeeder extends Seeder
                 Seat::create([
                     'slot_id' => $slot->id,
                     'rent_time' => Carbon::createFromTime($i,0,0,'Asia/Jakarta'),
-                    'booked' => rand(0,1)
+                    'booked' => rand(0,1),
+                    'confirmed' => rand(0,1),
+                    'price' => 120000
                 ]);
             }
         }

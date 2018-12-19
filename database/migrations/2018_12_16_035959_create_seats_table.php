@@ -19,6 +19,7 @@ class CreateSeatsTable extends Migration
             $table->time('rent_time');
             $table->boolean('booked')->nullable()->default(false);
             $table->boolean('confirmed')->nullable()->default(false);
+            $table->integer('price');
             $table->timestamps();
         });
     }

@@ -46,18 +46,20 @@ class SlotController extends Controller
         $total_seat = $request->get('total_seat');
         
         try{
-
             $slot = $lapangan->slots()->create([
                 'rent_date' => Carbon::createFromFormat('d-m-Y', $request->get('rent_date'))
             ]);
 
-            for ($i=1; $i <= $total_seat; $i++) {
+            if ($slot) {
+                for ($i=1; $i <= $total_seat; $i++) {
 
-                $hour = $start_time + $i; 
+                    $hour = $start_time + $i; 
 
-                $slot->seats()->create([
-                    'rent_time' => Carbon::createFromTime($hour,0,0,'Asia/Jakarta')
-                ]);
+                    $slot->seats()->create([
+                        'rent_time' => Carbon::createFromTime($hour,0,0,'Asia/Jakarta'),
+                        'price' => $request->get('price')
+                    ]);
+                }
             }
  
              return redirect()->back()

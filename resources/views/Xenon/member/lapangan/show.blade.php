@@ -73,6 +73,7 @@
                         <tr>
                           <th>Jam Sewa Dibuka</th>
                           <th>Status Booking</th>
+                          <th>Harga</th>
                           <th>#</th>
                         </tr>
                       </thead>
@@ -87,12 +88,13 @@
                               <button class="btn btn-secondary" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Jam ini tersedia untuk disewa!" data-original-title="Jam Sewa Tersedia!">Tersedia</button>
                               @endif
                             </td>
+                            <td>{{ $seat->price }}</td>
                             <td>
                               @if (!auth()->check())
-                              <button class="btn btn-primay btn-icon">
+                              <a href="{{ route('login') }}" class="btn btn-primary btn-icon">
                                 <i class="fa-lock"></i>
                                 <span>Login Untuk Booking</span>
-                              </button>
+                              </a>
                               @else
                                 @if (!$seat->booked)
                                 <a class="btn btn-secondary" href="{{ route('member.user.order') }}" onclick="event.preventDefault(); document.getElementById('order-form').submit();">
