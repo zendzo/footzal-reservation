@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Events\OrderStatusChangedEvent;
+use App\Seat;
 
 class OrderController extends Controller
 {
@@ -33,6 +35,9 @@ class OrderController extends Controller
 
             // ser seat to booked
             $order->seat()->update(['booked' => true]);
+            $seat = Seat::findOrfail($request->get('seat_id'));
+
+            event(new OrderStatusChangedEvent($seat));
  
            if($order){
              return redirect()->back()

@@ -1,7 +1,14 @@
 <?php
 
+use App\Events\OrderStatusChangedEvent;
+
 Route::get('/', function () {
     return view('welcome');
+})->middleware('guest');
+
+Route::get('/fire', function () {
+	event(new OrderStatusChangedEvent());
+	return 'fired';
 })->middleware('guest');
 
 // Administrator Sections

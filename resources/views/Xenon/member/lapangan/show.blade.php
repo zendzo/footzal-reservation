@@ -71,6 +71,7 @@
                   <table class="table">
                       <thead>
                         <tr>
+                          <th>#</th>
                           <th>Jam Sewa Dibuka</th>
                           <th>Status Booking</th>
                           <th>Harga</th>
@@ -80,32 +81,31 @@
                       <tbody>
                         @foreach ($slot->seats as $seat)
                         <tr>
+                          <td>{{ $seat->id }}</td>
                             <td>{{ $seat->rent_time }}</td>
                             <td>
-                              @if ($seat->booked)
-                              <button class="btn btn-red" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="jam ini tidak tersedia, atau sudah terbooking!" data-original-title="Jam Sewa Tidak Tersedia">Tidak Tersedia</button>
-                              @else
-                              <button class="btn btn-secondary" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Jam ini tersedia untuk disewa!" data-original-title="Jam Sewa Tersedia!">Tersedia</button>
-                              @endif
+                              <seat-status :booked="{{ $seat->booked }}" :seat_id="{{ $seat->id }}"></seat-status>
                             </td>
                             <td>{{ $seat->price }}</td>
                             <td>
-                              @if (!auth()->check())
+                              @if (!auth()->check() && !$seat->booked)
                               <a href="{{ route('login') }}" class="btn btn-primary btn-icon">
                                 <i class="fa-lock"></i>
                                 <span>Login Untuk Booking</span>
                               </a>
                               @else
-                                @if (!$seat->booked)
+                                @if ($seat->booked)
+                                
+                                @else
                                 <a class="btn btn-secondary" href="{{ route('member.user.order') }}" onclick="event.preventDefault(); document.getElementById('order-form').submit();">
-                                  <i class="fa fa-money"></i>  Order Sekarang
-                                </a>
-                              
-                                <form id="order-form" action="{{ route('member.user.order') }}" method="POST" style="display: none;">
-                                  @csrf
-                                  @method('POST')
-                                  <input type="hidden" name="seat_id" value="{{ $seat->id }}">
-                                </form>
+                                    <i class="fa fa-money"></i>  Order Sekarang
+                                  </a>
+                                
+                                  <form id="order-form" action="{{ route('member.user.order') }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="hidden" name="seat_id" value="{{ $seat->id }}">
+                                  </form>
                                 @endif
                               @endif
                             </td>

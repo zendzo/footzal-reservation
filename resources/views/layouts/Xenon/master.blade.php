@@ -32,7 +32,7 @@
 
 
 </head>
-<body class="page-body">
+<body class="page-body" id="app">
 
 	@include('layouts.Xenon.setting.pane')
 	

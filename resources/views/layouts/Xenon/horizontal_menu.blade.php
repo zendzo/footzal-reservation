@@ -22,7 +22,15 @@
 	<link rel="stylesheet" href="{{ asset('Xenon/assets/css/xenon-skins.css') }}">
 	<link rel="stylesheet" href="{{ asset('Xenon/assets/css/custom.css') }}">
 
-	<script src="{{ asset('Xenon/assets/js/jquery-1.11.1.min.js') }}"></script>
+	<script src="{{ asset('Xenon/assets/js/jquery-1.11.1.min.js') }}"></script> 
+	
+	<!-- appjs -->
+	<script src="{{ asset('/js/app.js') }}" defer></script>
+
+	<script>
+		
+	</script>
+
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -101,7 +109,7 @@
 		
 		<div class="main-content">
 			
-			<div class="row">
+			<div class="row" id="app">
 				@yield('content')
 			</div>
 			<!-- Main Footer -->
@@ -134,7 +142,6 @@
 			</footer>
 		</div>
 	</div>
-	
 	
 
 
