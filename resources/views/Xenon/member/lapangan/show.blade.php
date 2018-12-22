@@ -88,7 +88,7 @@
                             </td>
                             <td>{{ $seat->price }}</td>
                             <td>
-                              @if (!auth()->check() && !$seat->booked)
+                              @if (!auth()->check())
                               <a href="{{ route('login') }}" class="btn btn-primary btn-icon">
                                 <i class="fa-lock"></i>
                                 <span>Login Untuk Booking</span>
