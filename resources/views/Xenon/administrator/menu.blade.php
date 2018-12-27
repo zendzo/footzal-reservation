@@ -62,3 +62,16 @@
     </li>
   </ul>
 </li>
+<li class="{{ active(['admin.report.*'],'opened active') }}">
+    <a href="#">
+      <i class="linecons-wallet"></i>
+      <span class="title">Laporan</span>
+    </a>
+    <ul>
+      <li class="{{ active('admin.report.index') }}">
+        <a href="{{ route('admin.report.index') }}">
+          <span class="title">Laporan Penyewaan</span>
+        </a>
+      </li>
+    </ul>
+  </li>

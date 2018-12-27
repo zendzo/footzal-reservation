@@ -6,7 +6,7 @@
     </a>
   </li>
 
-  <li class="dropdown hover-line">
+  {{-- <li class="dropdown hover-line">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <i class="fa-envelope-o"></i>
       <span class="badge badge-green">15</span>
@@ -292,6 +292,6 @@
         </a>
       </li>
     </ul>
-  </li>
+  </li> --}}
 
 </ul>

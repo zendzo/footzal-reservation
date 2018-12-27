@@ -29,6 +29,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 
 	Route::resource('seat', 'SeatController');
 
+	Route::get('laporan-penyewaan','ReportController@index')->name('report.index');
+
 	Route::get('order-list-member','Admin\OrderController@index')->name('order.list');
 
 	Route::post('verify-payment', 'Admin\VerifiedPaymentController@verify')->name('verify.payment');
