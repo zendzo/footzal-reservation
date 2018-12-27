@@ -3,11 +3,11 @@
   <!-- logo -->
   <div class="logo">
     <a href="{{ route('home') }}" class="logo-expanded">
-      <img src="{{ asset('Xenon/assets/images/logo@2x.png') }}" width="80" alt="" />
+      <img src="{{ asset('Xenon/assets/images/logo-3-mazmur.png') }}" width="80" alt="" />
     </a>
 
     <a href="{{ route('home') }}" class="logo-collapsed">
-      <img src="{{ asset('Xenon/assets/images/logo-collapsed@2x.png') }}" width="40" alt="" />
+      <img src="{{ asset('Xenon/assets/images/logo-3-mazmur.png') }}" width="80" alt="" />
     </a>
   </div>
 

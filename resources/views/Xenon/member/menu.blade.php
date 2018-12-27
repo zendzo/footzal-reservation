@@ -1,22 +1,22 @@
-<li class="{{ active(['search.lapangan'],'active','opened') }}">
-  <a href="layout-variants.html">
+<li class="{{ active(['lapangan.show','lapangan.index'],'active','opened') }}">
+  <a href="{{ route('lapangan.index') }}">
     <i class="linecons-location"></i>
     <span class="title">Lokasi Lapangan</span>
   </a>
   <ul>
-    @foreach ($field_locations as $lap)
+    {{-- @foreach ($field_locations as $lap)
     <li class="{{ $lap->slug === request()->segment(2) ? 'active' : '' }}">
         <a href="{{ route('search.lapangan', $lap->slug) }}">
           <span class="title">{{ $lap->name }}</span>
         </a>
       </li>
-    @endforeach
+    @endforeach --}}
   </ul>
 </li>
 
 @if (auth()->check())
 <li class="{{ active(['member.user.order','member.payment.create','member.order.list'],'active','opened') }}">
-    <a href="#">
+    <a href="{{ route('member.order.list') }}">
       <i class="linecons-wallet"></i>
       <span class="title">My Booking</span>
       <span class="badge badge-green">{{ auth()->user()->orders->count() }}</span>
@@ -43,7 +43,7 @@
 
 @if (auth()->guest())
 <li>
-    <a href="">
+    <a href="{{ route('login') }}">
       <i class="linecons-user"></i>
       <span class="title">User Area</span>
     </a>

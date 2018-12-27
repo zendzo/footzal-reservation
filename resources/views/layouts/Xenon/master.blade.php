@@ -22,6 +22,8 @@
 	<link rel="stylesheet" href="{{ asset('Xenon/assets/css/xenon-skins.css') }}">
 	<link rel="stylesheet" href="{{ asset('Xenon/assets/css/custom.css') }}">
 
+	@yield('css')
+
 	<script src="{{ asset('Xenon/assets/js/jquery-1.11.1.min.js') }}"></script>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,7 +34,7 @@
 
 
 </head>
-<body class="page-body" id="app">
+<body class="page-body">
 
 	@include('layouts.Xenon.setting.pane')
 	

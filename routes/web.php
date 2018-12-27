@@ -63,4 +63,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('lapangan/{name}', 'Member\LapanganController@findByName')->name('search.lapangan');
+Route::get('lapangan/all','Member\LapanganController@index')->name('lapangan.index');
+
+Route::get('lapangan/{name}', 'Member\LapanganController@findByName')->name('lapangan.show');

@@ -53,8 +53,7 @@
 			<!-- Navbar Brand -->
 			<div class="navbar-brand">
 				<a href="/" class="logo">
-					<img src="{{ asset('Xenon/assets/images/logo-white-bg@2x.png') }}" width="80" alt="" class="hidden-xs" />
-					<img src="{{ asset('Xenon/assets/images/logo@2x.png') }}" width="80" alt="" class="visible-xs" />
+					<img src="{{ asset('Xenon/assets/images/logo-3-mazmur.png') }}" width="100" alt="" />
 				</a>
 				<a href="#" data-toggle="settings-pane" data-animate="true">
 					<i class="linecons-cog"></i>
@@ -122,9 +121,7 @@
 				
 					<!-- Add your copyright text here -->
 					<div class="footer-text">
-						&copy; 2014 
-						<strong>Xenon</strong> 
-						theme by <a href="http://laborator.co" target="_blank">Laborator</a> - <a href="http://themeforest.net/item/xenon-bootstrap-admin-theme/9059661?ref=Laborator" target="_blank">Purchase for only <strong>23$</strong></a>
+						
 					</div>
 					
 					
