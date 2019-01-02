@@ -12,13 +12,13 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th style="width: 2%;">#</th>
+                    <th style="width: 5%;">#</th>
                     <th>Kode</th>
                     <th>Lokasi</th>
                     <th>Tanggal | Jam</th>
                     <th>Status</th>
                     <th>Member</th>
-                    <th>#</th>
+                    <th colspan="3"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,6 +58,7 @@
                         @if ($order->paid && $order->confirmed && !$order->rejected)
                           <a class="btn btn-info btn-xs" href="#"><i class="fa fa-info"> selesai</i></a>
                         @else
+                          @if (!$order->rejected)
                           <a class="btn btn-xs btn-red" href="#" onclick="event.preventDefault(); document.getElementById('reject-payment').submit();">
                             <i class="fa fa-remove"></i> tolak
                           </a>
@@ -66,7 +67,11 @@
                             @csrf
                             <input type="hidden" name="code" value="{{ $order->code }}">
                           </form>
+                          @endif
                         @endif
+                      </td>
+                      <td>
+                        <a href="{{ route('admin.order.show', $order->code) }}" class="btn btn-secondary btn-xs"><i class="fa fa-print"></i> Invoice</a>
                       </td>
                     </tr>
                   @empty

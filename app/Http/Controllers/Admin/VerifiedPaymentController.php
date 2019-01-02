@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Events\OrderStatusChangedEvent;
 use App\Order;
+use App\Notifications\VerifyPaymentNotification;
+use App\Notifications\RejectPaymentNotification;
 
 class VerifiedPaymentController extends Controller
 {
@@ -19,6 +21,8 @@ class VerifiedPaymentController extends Controller
             $order->save();
 
             if ($order) {
+                // send notification
+                $order->member->notify(new VerifyPaymentNotification($order));
                 return redirect()->route('admin.order.list')
                     ->with('message', 'Konfirmasi Berhasil!')
                     ->with('status','Pembayaran Telah Dikonfirmasi')
@@ -40,14 +44,18 @@ class VerifiedPaymentController extends Controller
         try{
 
             $order->seat->booked = false;
-            $seat = $order->seat;
             $order->seat->save();
+            $order->rejected = true;
+            $order->save();
+            $seat = $order->seat;
 
-            $delete = $order->delete();
+            // $delete = $order->delete();
 
             event(new OrderStatusChangedEvent($seat));
 
-            if ($delete) {
+            if ($order) {
+                // send notification
+                $order->member->notify(new RejectPaymentNotification($order));
                 return redirect()->route('admin.order.list')
                     ->with('message', 'Pemesanan Telah Dibatalkan!')
                     ->with('status','Pembatalan Pemesanan')

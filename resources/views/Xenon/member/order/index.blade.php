@@ -19,6 +19,7 @@
               <th>Status Bayar</th>
               <th>Status Konfirmasi</th>
               <th>Upload Pembayaran</th>
+              <th colspan="2">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -29,6 +30,7 @@
                 <td>{{ $order->seat->slot->lapangan->name }}</td>
                 <td>{{ $order->seat->slot->rent_date }} {{ $order->seat->rent_time }}</td>
                 <td>{{ $order->seat->price }}</td>
+                @if (!$order->rejected)
                 <td>
                   @if ($order->paid)
                   <button class="btn btn-secondary" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Order Telah Dibayar!" data-original-title="Status Pembayaran."><i class="fa fa-check"></i> Telah Dibayar</button>
@@ -51,6 +53,21 @@
                   @else
                   <a href="#" class="btn btn-info"><i class="fa fa-info"></i> Pembayaran Selesai</a>
                   @endif
+                </td>
+                @else
+                <td colspan="3">
+                  <h4 class="text-center text-red">
+                    Order Ditolak
+                  </h4>
+                </td>
+                @endif
+                <td>
+                  <a href="{{ route('member.order.show', $order->code) }}" class="btn btn-secondary btn-xs"><i class="fa fa-print"></i> Cetak</a>
+                </td>
+                <td>
+                    @if (!$order->rejected)
+                    <a href="{{ route('member.order.show', $order->code) }}" class="btn btn-warning btn-xs"><i class="fa fa-bell-slash"></i> Batal</a>
+                    @endif
                 </td>
               </tr>
             @empty

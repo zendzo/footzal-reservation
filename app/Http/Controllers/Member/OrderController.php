@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Order;
 use App\Events\OrderStatusChangedEvent;
+use App\Notifications\MemberOrderNotification;
+use App\Order;
 use App\Seat;
+use App\User;
 
 class OrderController extends Controller
 {
@@ -40,6 +42,11 @@ class OrderController extends Controller
             event(new OrderStatusChangedEvent($seat));
  
            if($order){
+            //send notification
+            $user = User::first();
+
+            $user->notify(new MemberOrderNotification($order));
+
              return redirect()->back()
                  ->with('message', 'Data Telah Tersimpan!')
                  ->with('status','success')
@@ -51,5 +58,12 @@ class OrderController extends Controller
                  ->with('status','error')
                  ->with('type','error');
          }
+    }
+
+    public function show($code)
+    {
+        $order = Order::whereCode($code)->first();
+
+        return view($this->viewLocation('member.order.show'), compact(['order']));
     }
 }

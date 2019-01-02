@@ -39,7 +39,7 @@
     </li>
   </ul>
 </li>
-<li class="{{ active(['admin.order.list'],'opened active') }}">
+<li class="{{ active(['admin.order.*'],'opened active') }}">
   <a href="#">
     <i class="linecons-wallet"></i>
     <span class="title">Data Penyewaan</span>
@@ -48,16 +48,6 @@
     <li class="{{ active('admin.order.list') }}">
       <a href="{{ route('admin.order.list') }}">
         <span class="title">Semua</span>
-      </a>
-    </li>
-    <li class="{{ active('admin.slot.index') }}">
-      <a href="{{ route('admin.slot.index') }}">
-        <span class="title">Sudah Konfirmasi</span>
-      </a>
-    </li>
-    <li class="{{ active('admin.seat.index') }}">
-      <a href="{{ route('admin.seat.index') }}">
-        <span class="title">Belum Konfirmasi</span>
       </a>
     </li>
   </ul>
@@ -71,6 +61,21 @@
       <li class="{{ active('admin.report.index') }}">
         <a href="{{ route('admin.report.index') }}">
           <span class="title">Laporan Penyewaan</span>
+        </a>
+      </li>
+      <li class="{{ active('admin.report.confirmed') }}">
+        <a href="{{ route('admin.report.confirmed') }}">
+          <span class="title">Sudah Konfirmasi</span>
+        </a>
+      </li>
+      <li class="{{ active('admin.report.notConfirmed') }}">
+        <a href="{{ route('admin.report.notConfirmed') }}">
+          <span class="title">Belum Konfirmasi</span>
+        </a>
+      </li>
+      <li class="{{ active('admin.report.rejected') }}">
+        <a href="{{ route('admin.report.rejected') }}">
+          <span class="title">Ditolak / Batal</span>
         </a>
       </li>
     </ul>

@@ -31,7 +31,15 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 
 	Route::get('laporan-penyewaan','ReportController@index')->name('report.index');
 
+	Route::get('laporan-konfrimasi','ReportController@orderConfirm')->name('report.confirmed');
+
+	Route::get('laporan-menunggu','ReportController@notConfirm')->name('report.notConfirmed');
+
+	Route::get('laporan-ditolak','ReportController@rejected')->name('report.rejected');
+
 	Route::get('order-list-member','Admin\OrderController@index')->name('order.list');
+
+	Route::get('order-detail/{code}','Admin\OrderController@show')->name('order.show');
 
 	Route::post('verify-payment', 'Admin\VerifiedPaymentController@verify')->name('verify.payment');
 
@@ -52,6 +60,8 @@ Route::group(['prefix'=>'member','as'=>'member.'], function(){
 	]);
 
 	Route::get('my-order', 'Member\OrderController@myOrder')->name('order.list');
+
+	Route::get('my-order/{code}', 'Member\OrderController@show')->name('order.show');
 
 	Route::get('upload-payment/{code}', 'Member\OrderController@uploadPayment')->name('payment.create');
 
